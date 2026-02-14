@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine buat Tasya 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+      color: #fff;
+      text-align: center;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.25);
+      padding: 35px 25px;
+      border-radius: 25px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      backdrop-filter: blur(10px);
+      max-width: 340px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .btn {
+      margin-top: 15px;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 30px;
+      background: #ff4d6d;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      background: #ff2e55;
+      transform: scale(1.08);
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 20px;
+      color: rgba(255,255,255,0.9);
+      animation: float 5s linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh); opacity: 1; }
+      100% { transform: translateY(-10vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="card">
+    <h1>💝 Hai Tasya Cantik 💝</h1>
+    <p id="message">
+      Katanya Valentine cuma sehari…  
+      tapi mikirin kamu tuh bisa tiap hari 😆💗
+    </p>
+    <button class="btn" onclick="next()">Klik aku 😳</button>
+  </div>
+
+  <script>
+    let step = 0;
+
+    function next() {
+      const msg = document.getElementById("message");
+      const btn = document.querySelector(".btn");
+
+      if (step === 0) {
+        msg.innerHTML = "Tasya cantik, kamu itu kayak WiFi…<br>bikin aku nyariin terus 📶😂";
+        step++;
+      } else if (step === 1) {
+        msg.innerHTML = "Coklat Valentine kalah manis<br>sama senyum kamu 🍫😆";
+        step++;
+      } else if (step === 2) {
+        msg.innerHTML = "<b>Mau gak jadi Valentine aku hari ini? 😳💖</b>";
+        btn.innerText = "MAU 😆";
+        step++;
+      } else {
+        msg.innerHTML = "YEAYYY 🎉💖<br>Makasih ya Tasya Cantik 😳<br><br><small>dari Ruli</small>";
+        btn.style.display = "none";
+      }
+    }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+
+    setInterval(createHeart, 300);
+  </script>
+
+</body>
+</html>
